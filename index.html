@@ -1,1 +1,114 @@
-<!doctype html><meta charset=utf-8><title>Tinybig Games</title><meta name=viewport content="width=device-width,initial-scale=1"><body style="background:#0b0d12;color:#cfdcf5;font:16px/1.6 system-ui;margin:0;padding:4rem 1.5rem"><div style="max-width:40rem;margin:0 auto"><h1 style="color:#ffc65c">Tinybig Games</h1><p><a style="color:#6fc9e8;font-size:1.1rem" href="/holdout/">Holdout — Defend the Deck</a></p></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tinybig Games</title>
+<meta name="description" content="Small games from Tinybig. Currently: Holdout — defend a rising deck, fall, upgrade, repeat.">
+
+<meta property="og:title" content="Tinybig Games">
+<meta property="og:description" content="Small games from Tinybig.">
+<meta property="og:image" content="https://games.tinybig.ai/holdout/assets/feature.png">
+<meta property="og:url" content="https://games.tinybig.ai/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/holdout/assets/icon.png">
+
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b0d12;
+    --panel: #12151d;
+    --line: #232838;
+    --ink: #eef3ff;
+    --dim: #8fa2c4;
+    --faint: #6c7a92;
+    --gold: #ffc65c;
+    --orange: #ff8434;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: #6fc9e8; }
+
+  header {
+    text-align: center; padding: 4.5rem 1.25rem 3rem;
+    background: radial-gradient(circle at 50% 25%, #1a1f2b 0%, var(--bg) 70%);
+    border-bottom: 1px solid var(--line);
+  }
+  h1 { font-size: clamp(2rem, 6vw, 2.9rem); margin: 0 0 .5rem; letter-spacing: .02em; }
+  header p { color: var(--dim); margin: 0; font-size: 1.05rem; }
+
+  .wrap { max-width: 54rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
+  h2 { font-size: .85rem; letter-spacing: .18em; color: var(--faint);
+       text-transform: uppercase; margin: 3rem 0 1rem; font-weight: 600; }
+
+  /* One card now, a grid when there are more. minmax means a single game does
+     not stretch into a letterbox on a wide screen. */
+  .games { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+
+  .game {
+    display: flex; gap: 1.1rem; align-items: flex-start;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 16px; padding: 1.25rem; text-decoration: none; color: inherit;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .game:hover { border-color: #33405c; transform: translateY(-2px); }
+  .game img { width: 76px; height: 76px; border-radius: 17px; flex: 0 0 auto; }
+  .game h3 { margin: 0 0 .25rem; font-size: 1.2rem; color: var(--ink); }
+  .game .sub { margin: 0 0 .6rem; color: var(--gold); font-size: .95rem; }
+  .game .body { margin: 0; color: var(--dim); font-size: .93rem; }
+  .pills { margin-top: .7rem; display: flex; gap: .4rem; flex-wrap: wrap; }
+  .pill {
+    font-size: .74rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--faint); border: 1px solid var(--line);
+    border-radius: 999px; padding: .18rem .6rem;
+  }
+  .pill.live { color: #15171d; background: var(--orange); border-color: var(--orange); }
+
+  footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+           color: var(--faint); font-size: .9rem; }
+  footer a { color: var(--dim); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Tinybig Games</h1>
+  <p>Small games, made properly.</p>
+</header>
+
+<div class="wrap">
+  <h2>Games</h2>
+  <div class="games">
+    <a class="game" href="/holdout/">
+      <img src="/holdout/assets/icon.png" alt="">
+      <div>
+        <h3>Holdout</h3>
+        <p class="sub">Defend the deck. Fall, upgrade, repeat.</p>
+        <p class="body">
+          A one-thumb survival climb. The gun fires itself, so the only question
+          is where you stand — and when the shaft takes you, the rope is the only
+          way back.
+        </p>
+        <div class="pills">
+          <span class="pill live">Play free</span>
+          <span class="pill">Browser</span>
+          <span class="pill">Android</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    <p>
+      Part of <a href="https://tinybig.ai">Tinybig</a> ·
+      <a href="mailto:games@tinybig.ai">games@tinybig.ai</a>
+    </p>
+  </footer>
+</div>
+
+</body>
+</html>
