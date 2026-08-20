@@ -38,6 +38,7 @@
     background: radial-gradient(circle at 50% 25%, #1a1f2b 0%, var(--bg) 70%);
     border-bottom: 1px solid var(--line);
   }
+  header img.mark { width: 96px; height: 96px; display: block; margin: 0 auto 1.1rem; }
   h1 { font-size: clamp(2rem, 6vw, 2.9rem); margin: 0 0 .5rem; letter-spacing: .02em; }
   header p { color: var(--dim); margin: 0; font-size: 1.05rem; }
 
@@ -76,6 +77,10 @@
 <body>
 
 <header>
+  <!-- The house mark, vector rather than the site's logo.png: that one has a
+       black background baked in and no alpha, which shows as a square against
+       this page's near-black. Same geometry, 1 KB. -->
+  <img class="mark" src="/assets/tinybig-logo.svg" alt="Tinybig" width="96" height="96">
   <h1>Tinybig Games</h1>
   <p>Small games, made properly.</p>
 </header>
