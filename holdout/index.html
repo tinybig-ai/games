@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holdout — Defend the Deck</title>
+<meta name="description" content="The gun fires itself. Your job is to hold the deck. A one-thumb survival climb: run, jump, and grapple back when the shaft takes you.">
+
+<!-- Link previews. The feature graphic is already 1024x500, which is close
+     enough to the 1.91:1 both cards want that it needs no second crop. -->
+<meta property="og:title" content="Holdout — Defend the Deck">
+<meta property="og:description" content="The gun fires itself. Your job is to hold the deck.">
+<meta property="og:image" content="https://games.tinybig.ai/holdout/assets/feature.png">
+<meta property="og:url" content="https://games.tinybig.ai/holdout/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/holdout/assets/icon.png">
+
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b0d12;
+    --panel: #12151d;
+    --line: #232838;
+    --ink: #eef3ff;
+    --dim: #8fa2c4;
+    --faint: #6c7a92;
+    --gold: #ffc65c;
+    --orange: #ff8434;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
+
+  /* Hero. The radial matches the icon's own backdrop so the page and the mark
+     read as one thing rather than as art pasted onto a template. */
+  header {
+    text-align: center;
+    padding: 4rem 1.25rem 3rem;
+    background: radial-gradient(circle at 50% 30%, #1a1f2b 0%, var(--bg) 70%);
+    border-bottom: 1px solid var(--line);
+  }
+  header img.icon {
+    width: 128px; height: 128px; border-radius: 28px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.6);
+  }
+  h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); margin: 1.25rem 0 .35rem; letter-spacing: .02em; }
+  .tag { color: var(--gold); font-size: clamp(1rem, 3.4vw, 1.2rem); margin: 0 0 2rem; }
+
+  .cta { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: .85rem 1.6rem; border-radius: 12px;
+    font-weight: 600; text-decoration: none; font-size: 1.05rem;
+    border: 1px solid transparent; transition: transform .12s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--orange); color: #15171d; }
+  .btn-ghost { border-color: var(--line); color: var(--dim); }
+  .btn-ghost[aria-disabled="true"] { opacity: .55; cursor: default; }
+
+  h2 { font-size: 1.35rem; margin: 3rem 0 .75rem; }
+  p.lede { color: var(--dim); font-size: 1.05rem; max-width: 46rem; }
+
+  /* Screenshots scroll sideways rather than reflowing into a grid: they are
+     tall phone captures, and a grid of them on a wide screen is mostly gaps. */
+  .shots {
+    display: flex; gap: 1rem; overflow-x: auto; padding: .5rem 0 1.25rem;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  }
+  .shots img {
+    height: 62vh; max-height: 620px; width: auto; border-radius: 14px;
+    border: 1px solid var(--line); scroll-snap-align: center; flex: 0 0 auto;
+  }
+
+  .feats { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .feat { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.25rem; }
+  .feat h3 { margin: 0 0 .35rem; font-size: 1rem; color: var(--gold); letter-spacing: .04em; }
+  .feat p { margin: 0; color: var(--dim); font-size: .95rem; }
+
+  footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--faint); font-size: .9rem; }
+  footer a { color: var(--dim); }
+  a { color: #6fc9e8; }
+</style>
+</head>
+<body>
+
+<header>
+  <img class="icon" src="/holdout/assets/icon.png" alt="Holdout icon">
+  <h1>HOLDOUT</h1>
+  <p class="tag">Defend the deck. Fall, upgrade, repeat.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="https://holdout-xi.vercel.app/">Play in your browser</a>
+    <!-- Swap href and drop aria-disabled the moment the listing is public. -->
+    <span class="btn btn-ghost" aria-disabled="true">Google Play — coming soon</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2>The gun fires itself</h2>
+  <p class="lede">
+    The deck is rising and boarders are climbing onto it. Your rifle handles the
+    shooting — so the only question that matters is where you are standing.
+    Get knocked off the edge and everything changes: the gun goes quiet, and the
+    rope is the only verb you have left. Throw it at a wall, swing, and get back
+    on before the deck climbs out of reach.
+  </p>
+  <p class="lede"><strong>Rope or gun, never both.</strong> That one rule is the whole game.</p>
+
+  <h2>Screens</h2>
+  <div class="shots">
+    <img src="/holdout/assets/shot1.jpg" alt="Swinging on the rope beneath the deck" loading="lazy">
+    <img src="/holdout/assets/shot2.jpg" alt="Holding the deck against boarders" loading="lazy">
+    <img src="/holdout/assets/shot3.jpg" alt="Choosing a perk between floors" loading="lazy">
+    <img src="/holdout/assets/shot4.jpg" alt="A hazard filling the shaft" loading="lazy">
+  </div>
+
+  <h2>What a run looks like</h2>
+  <div class="feats">
+    <div class="feat">
+      <h3>EVERY FLOOR IS A CHOICE</h3>
+      <p>Clear a floor, take a perk. Heavier rounds, bullets that punch through
+         bodies, a hook that tears through anything in its path.</p>
+    </div>
+    <div class="feat">
+      <h3>THE SHAFT TURNS HOSTILE</h3>
+      <p>Past a kilometre it stops being just boarders. Laser grids with one lane
+         through them, saw walls, falling bombs, and a blade that comes for the
+         deck itself.</p>
+    </div>
+    <div class="feat">
+      <h3>SPEND WHAT YOU EARNED</h3>
+      <p>Scrap buys permanent traits, eight guns that each play differently, and a
+         crew to carry them. A bad run still moves you forward.</p>
+    </div>
+    <div class="feat">
+      <h3>ONE LEADERBOARD</h3>
+      <p>Every run is posted automatically. See exactly who you just passed, and
+         who is still above you.</p>
+    </div>
+  </div>
+
+  <h2>No catches</h2>
+  <p class="lede">
+    No adverts. No purchases. No accounts. The only thing Holdout keeps is the
+    name you choose and how high you got — see the
+    <a href="/holdout/privacy/">privacy policy</a>.
+  </p>
+
+  <footer>
+    <p>Holdout — a <a href="https://tinybig.ai">Tinybig</a> game.
+       <a href="/holdout/privacy/">Privacy</a> ·
+       <a href="mailto:games@tinybig.ai">games@tinybig.ai</a></p>
+  </footer>
+</div>
+
+</body>
+</html>
