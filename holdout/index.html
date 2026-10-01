@@ -95,7 +95,7 @@
   h1, h2, .feat h3 { font-family: var(--display); font-weight: 400; }
   h1 { font-size: clamp(3rem, 12vw, 6.5rem); line-height: .95; letter-spacing: .01em; }
   .btn-primary { color: #15171d; }
-  .btn-ghost { border-color: var(--line); box-shadow: none; }
+  .btn-ghost { border-color: var(--page-ink); color: var(--page-ink); }
   .feat { border-radius: 8px; border-left: 4px solid var(--orange); }
   footer { border-top: 3px solid var(--line); }
 </style>
@@ -116,8 +116,7 @@
   <p class="tag">Defend the deck. Fall, upgrade, repeat.</p>
   <div class="cta">
     <a class="btn btn-primary" href="https://holdout-xi.vercel.app/">Play in your browser</a>
-    <!-- Swap href and drop aria-disabled the moment the listing is public. -->
-    <span class="btn btn-ghost" aria-disabled="true">Google Play — coming soon</span>
+    <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=ai.tinybig.games.holdout">Get it on Google Play</a>
   </div>
 </header>
 
