@@ -15,6 +15,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/holdout/assets/icon.png">
+<link rel="stylesheet" href="/assets/site.css">
 
 <style>
   :root {
@@ -85,9 +86,29 @@
   footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--faint); font-size: .9rem; }
   footer a { color: var(--dim); }
   a { color: #6fc9e8; }
+
+  /* Studio chrome on Holdout's palette, with the deck's hazard stripe. */
+  :root { --page-bg: #0b0d12; --page-ink: #eef3ff; --page-dim: #8fa2c4; --page-line: #232838; --page-accent: #ff8434; }
+  header { border-bottom: 0; position: relative; }
+  header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12px;
+    background: repeating-linear-gradient(-45deg, #ff8434 0 16px, #0b0d12 16px 32px); }
+  h1, h2, .feat h3 { font-family: var(--display); font-weight: 400; }
+  h1 { font-size: clamp(3rem, 12vw, 6.5rem); line-height: .95; letter-spacing: .01em; }
+  .btn-primary { color: #15171d; }
+  .btn-ghost { border-color: var(--line); box-shadow: none; }
+  .feat { border-radius: 8px; border-left: 4px solid var(--orange); }
+  footer { border-top: 3px solid var(--line); }
 </style>
 </head>
 <body>
+
+<nav class="nav">
+  <a class="brand" href="/"><img src="/assets/tinybig-logo.svg" alt="">TINYBIG GAMES</a>
+  <ul>
+    <li><a href="/holdout/" aria-current="page">Holdout</a></li>
+    <li><a href="/inkboom/">Inkboom</a></li>
+  </ul>
+</nav>
 
 <header>
   <img class="icon" src="/holdout/assets/icon.png" alt="Holdout icon">

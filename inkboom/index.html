@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inkboom: Chain Reaction</title>
+<meta name="description" content="Drop the ink that burns them all. A one-tap chain-reaction roguelite for your browser and Android.">
+
+<meta property="og:title" content="Inkboom: Chain Reaction">
+<meta property="og:description" content="Drop the ink that burns them all.">
+<meta property="og:image" content="https://games.tinybig.ai/inkboom/assets/feature.png">
+<meta property="og:url" content="https://games.tinybig.ai/inkboom/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/inkboom/assets/icon.png">
+<link rel="stylesheet" href="/assets/site.css">
+
+<!-- The page is printed the way the game is: cream stock, black ink, three
+     spot colours (red, blue, yellow), hard offset shadows, halftone dots. -->
+<style>
+  :root {
+    color-scheme: light;
+    --page-bg: #efe8d8; --page-ink: #171513; --page-dim: #4a453e;
+    --page-line: #171513; --page-accent: #ff3b1f;
+    --blue: #2f4bff; --gold: #f2ae00; --card: #fbf8f0;
+  }
+  body::after { opacity: .22; mix-blend-mode: multiply; }
+
+  .hero { position: relative; overflow: hidden; padding: 3rem 1.25rem 4rem; text-align: center; }
+  /* Halftone blasts behind the title, drawn in CSS so they scale with the page. */
+  .blot { position: absolute; border-radius: 50%; border: 4px solid var(--page-ink); z-index: -1;
+          background: radial-gradient(var(--c) 32%, transparent 35%) 0 0 / 16px 16px, var(--card); }
+  .blot.a { --c: var(--gold); width: 26rem; height: 26rem; left: -8rem; top: -6rem; }
+  .blot.b { --c: var(--page-accent); width: 22rem; height: 22rem; right: -7rem; bottom: -8rem; }
+  .blot.c { --c: var(--blue); width: 9rem; height: 9rem; right: 12%; top: 1.5rem; }
+  .hero img.icon { width: 120px; height: 120px; border-radius: 26px; border: 4px solid var(--page-ink); box-shadow: 6px 6px 0 var(--page-ink); }
+  .hero h1 {
+    margin: 1.4rem 0 .4rem; font-size: clamp(3.6rem, 15vw, 9rem);
+    text-shadow: .05em .045em 0 var(--blue), -.03em -.02em 0 var(--page-accent);
+    animation: slip 3.2s ease-in-out infinite alternate;
+  }
+  /* The print slipping on the press, as on the title screen. */
+  @keyframes slip { to { text-shadow: .06em .035em 0 var(--blue), -.02em -.03em 0 var(--page-accent); } }
+  .hero .sub { font-family: var(--display); font-size: clamp(.9rem, 3.2vw, 1.25rem); letter-spacing: .06em; margin: 0 0 .3rem; }
+  .hero .tag { font-size: clamp(1.05rem, 3.6vw, 1.35rem); margin: 0 0 2rem; color: var(--page-dim); }
+  .cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { color: #fff; }
+  .btn-ghost { background: var(--page-bg); }
+  @media (max-width: 640px) {
+    .blot.a { width: 15rem; height: 15rem; left: -8rem; top: -5rem; }
+    .blot.b { width: 12rem; height: 12rem; right: -7rem; bottom: -6rem; }
+    .blot.c { width: 5rem; height: 5rem; right: -1rem; top: 1rem; }
+  }
+
+  .wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.25rem; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.6rem, 5vw, 2.4rem); margin: 3.5rem 0 1rem; line-height: 1.05; }
+  h2 .hl { background: linear-gradient(transparent 55%, var(--gold) 55%); padding: 0 .1em; }
+  .lede { font-size: 1.1rem; max-width: 44rem; }
+
+  .shots { display: flex; gap: 1.25rem; overflow-x: auto; padding: .5rem .5rem 1.75rem; scroll-snap-type: x mandatory; }
+  .shots img {
+    height: 62vh; max-height: 600px; width: auto; flex: 0 0 auto; scroll-snap-align: center;
+    border: 4px solid var(--page-ink); border-radius: 12px; box-shadow: 7px 7px 0 var(--page-ink);
+  }
+  .shots img:nth-child(even) { transform: rotate(1.2deg); }
+  .shots img:nth-child(odd) { transform: rotate(-1deg); }
+
+  .feats { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr)); }
+  .feat { background: var(--card); border: 3px solid var(--page-ink); border-radius: 8px; box-shadow: 6px 6px 0 var(--page-ink); padding: 1.2rem 1.25rem; }
+  .feat .dot { width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--page-ink); margin-bottom: .7rem; box-shadow: 3px 3px 0 var(--page-ink); }
+  .feat h3 { margin: 0 0 .35rem; font-family: var(--display); font-weight: 400; font-size: 1.1rem; }
+  .feat p { margin: 0; color: var(--page-dim); }
+
+  .stamp {
+    display: inline-block; margin-top: 1rem; padding: .5rem 1rem; transform: rotate(-3deg);
+    font-family: var(--display); letter-spacing: .08em; color: var(--page-accent);
+    border: 4px solid var(--page-accent); border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="/"><img src="/assets/tinybig-logo.svg" alt="">TINYBIG GAMES</a>
+  <ul>
+    <li><a href="/holdout/">Holdout</a></li>
+    <li><a href="/inkboom/" aria-current="page">Inkboom</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <span class="blot a"></span><span class="blot b"></span><span class="blot c"></span>
+  <img class="icon" src="/inkboom/assets/icon.png" alt="Inkboom icon">
+  <h1 class="display">INKBOOM</h1>
+  <p class="sub">CHAIN REACTION</p>
+  <p class="tag">Drop the ink that burns them all.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="/inkboom/play/">Play in your browser</a>
+    <!-- Swap href and drop aria-disabled the moment the listing is public. -->
+    <span class="btn btn-ghost" aria-disabled="true">Google Play — coming soon</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2>One tap. <span class="hl">The whole page.</span></h2>
+  <p class="lede">
+    Tap the field and a blot of ink bursts open. Every orb it catches bursts too,
+    and the chain spreads across the page. Aim well and one tap wipes the lot.
+    Pop every orb and you win the round, whatever the target says.
+  </p>
+
+  <h2>Screens</h2>
+  <div class="shots">
+    <img src="/inkboom/assets/shot1.jpg" alt="A chain reaction spreading across the field" loading="lazy">
+    <img src="/inkboom/assets/shot2.jpg" alt="A thrown blast rolling around a ring arena" loading="lazy">
+    <img src="/inkboom/assets/shot3.jpg" alt="The shop, with orbs to evolve" loading="lazy">
+    <img src="/inkboom/assets/shot4.jpg" alt="Round 44, crowded with armoured orbs and black holes" loading="lazy">
+  </div>
+
+  <h2>A climb with no ceiling</h2>
+  <div class="feats">
+    <div class="feat"><div class="dot" style="background:var(--page-accent)"></div>
+      <h3>Build your bag</h3>
+      <p>Spend between rounds on orbs that burst bigger, grow the multiplier or roll across the field. Then evolve the ones you love.</p></div>
+    <div class="feat"><div class="dot" style="background:var(--blue)"></div>
+      <h3>Bosses change the page</h3>
+      <p>Every fourth round brings a new arena (rings, hourglasses, rooms) and a new rule that stacks on the last.</p></div>
+    <div class="feat"><div class="dot" style="background:var(--gold)"></div>
+      <h3>Throw the blast</h3>
+      <p>With the Slingshot, drag to send your blast rolling around walls and into the corners a tap can't reach.</p></div>
+    <div class="feat"><div class="dot" style="background:var(--card)"></div>
+      <h3>Lose, but not everything</h3>
+      <p>Beat a boss and your build is saved. A bad round sends you back to that checkpoint, not to round one.</p></div>
+  </div>
+
+  <h2>No catches</h2>
+  <p class="lede">
+    Free. No adverts, no purchases, no account, and nothing leaves your device.
+    The <a href="/inkboom/privacy/">privacy policy</a> is three short paragraphs.
+  </p>
+  <span class="stamp">NO ADS · OFFLINE · FREE</span>
+</main>
+
+<footer class="site-foot">
+  <span><img src="/assets/tinybig-logo.svg" alt="">Inkboom: a <a href="https://tinybig.ai">Tinybig</a> game</span>
+  <span><a href="/inkboom/privacy/">Privacy</a> · <a href="mailto:games@tinybig.ai">games@tinybig.ai</a></span>
+</footer>
+
+</body>
+</html>

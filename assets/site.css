@@ -1,0 +1,72 @@
+/* Studio chrome shared by every page: type, nav, footer, grain.
+   Each game page sets its own palette through the --page-* variables so the
+   studio frame stays the same while every game keeps its own world. */
+@font-face {
+  font-family: "Archivo Black";
+  src: url("/assets/fonts/ArchivoBlack-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --page-bg: #11100f;
+  --page-ink: #f3ecdc;
+  --page-dim: #b8ae9c;
+  --page-line: #2b2825;
+  --page-accent: #ff5a1f;
+  --display: "Archivo Black", "Arial Black", Impact, system-ui, sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--page-bg); color: var(--page-ink);
+  font: 17px/1.6 var(--body);
+}
+/* Paper grain over everything; pointer-events off so it never eats a tap. */
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  background: url("/assets/grain.svg"); opacity: .18; mix-blend-mode: overlay;
+}
+a { color: inherit; }
+img { max-width: 100%; }
+
+.nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  max-width: 72rem; margin: 0 auto; padding: 1.1rem 1.25rem;
+}
+.nav .brand {
+  display: flex; align-items: center; gap: .6rem; text-decoration: none;
+  font-family: var(--display); letter-spacing: .04em; font-size: .95rem;
+}
+.nav .brand img { width: 30px; height: 30px; }
+.nav .brand { white-space: nowrap; }
+@media (max-width: 420px) { .nav .brand { font-size: .8rem; } .nav ul { gap: .9rem; } }
+.nav ul { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; font-weight: 600; font-size: .92rem; color: var(--page-dim); }
+.nav ul a:hover, .nav ul a[aria-current] { color: var(--page-ink); }
+
+.display { font-family: var(--display); font-weight: 400; letter-spacing: -.01em; line-height: .92; }
+
+.btn {
+  display: inline-block; padding: .9rem 1.5rem; font-family: var(--display);
+  font-size: 1rem; letter-spacing: .03em; text-decoration: none;
+  border: 3px solid var(--page-ink); border-radius: 6px;
+  box-shadow: 5px 5px 0 var(--page-ink); transition: transform .1s ease, box-shadow .1s ease;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--page-ink); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--page-ink); }
+.btn-primary { background: var(--page-accent); color: var(--page-bg); }
+.btn-ghost { background: transparent; color: var(--page-ink); }
+.btn[aria-disabled="true"] { opacity: .5; cursor: default; box-shadow: none; transform: none; }
+
+.site-foot {
+  max-width: 72rem; margin: 4rem auto 0; padding: 2rem 1.25rem 3rem;
+  border-top: 3px solid var(--page-line); color: var(--page-dim); font-size: .92rem;
+  display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between;
+}
+.site-foot img { width: 18px; height: 18px; vertical-align: -3px; margin-right: .35rem; }
+.site-foot a { color: var(--page-dim); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
